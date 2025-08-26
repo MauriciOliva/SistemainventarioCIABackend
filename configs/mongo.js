@@ -24,7 +24,9 @@ export const connect = async () => {
         // ✅ CONEXIÓN CORREGIDA - Usa MONGO_URI directamente
         await mongoose.connect(process.env.MONGO_URI, {
             maxPoolSize: 50,
-            serverSelectionTimeoutMS: 5000
+            serverSelectionTimeoutMS: 5000,
+            socketTimeoutMS: 45000,
+            connectTimeoutMS: 30000
         })
     } catch (err) {
         console.error('Database connection failed', err)
