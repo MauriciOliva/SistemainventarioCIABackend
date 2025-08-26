@@ -6,43 +6,44 @@ const productoSchema = new Schema({
         required: true,
         trim: true,
     },
-    numeroSerie:{
-        type: String,
-        required: true,
-        trim: true,
-        unique: true,
-    },
     numeroPlaca:{
         type: String,
         required: true,
         trim: true,
         unique: true,
     },
-    observaciones:{
+    numeroSerie:{
         type: String,
+        required: true,
         trim: true,
-        default: "Sin observaciones",
+        unique: true,
     },
     tipoMovimiento:{
         type: String,
         required: true,
         trim: true,
-        enum: ["Entrada", "Salida"],
+        enum: ["Entrada", "Salida","Bodega"],
     },
-    cantidad:{
-        type: Number,
-        required: true,
-        min: 1,
-    },
-    fechaMovimiento:{
+    fechaIngreso:{
         type: Date,
-        default: Date.now,
+    },
+    fechgaInstalacion:{
+        type: Date,
     },
     nombreInstalador:{
         type: String,
-        required: true,
         trim: true, 
     },
+    observaciones:{
+        type: String,
+        trim: true,
+        default: "Sin observaciones",
+    },
+    estado:{
+        type: String,
+        trim: true,
+        enum: ["Nuevo", "Usado", "Dañado"],
+    }
 })
 
 export default model("Producto", productoSchema);
